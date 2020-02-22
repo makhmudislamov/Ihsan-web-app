@@ -1,0 +1,6 @@
+Had isssue of starting mongod
+Error: 
+E STORAGE  [initandlisten] Failed to set up listener: SocketException: Address already in use
+Solution: delete old mongod.lock file, kill the previous session and restart
+Link1: https://stackoverflow.com/questions/12831939/couldnt-connect-to-server-127-0-0-127017
+Link2: https://stackoverflow.com/questions/47975929/socketexception-address-already-in-use-mongodb
