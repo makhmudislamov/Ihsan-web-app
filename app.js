@@ -53,15 +53,14 @@ app.get('/campaigns/new', (req, res) => {
     res.render('campaigns-new', {});
 })
 
-
 // CREATE
 app.post('/campaigns', (req, res) => {
-        Campaign.create(req.body).then((campaign) => {
-        console.log(campaign);
-        res.redirect('/');
-    }).catch((err) => {
-        console.log(err.message);
-    })
+  Campaign.create(req.body).then((campaign) => {
+    console.log(campaign)
+    res.redirect(`/campaigns/${campaign._id}`) // Redirect to campaigns/:id
+  }).catch((err) => {
+    console.log(err.message)
+  })
 })
 
 // SHOW
