@@ -6,4 +6,15 @@
 <h2>{{campaign.amount}}</h2>
 <p>{{campaign.description}}</p>
 
-<p><a href="/campaigns/{{campaign._id}}/edit">Edit</a></p>
+<p>
+    <a href="/campaigns/{{campaign._id}}/edit">
+        Edit
+    </a>
+</p>
+
+<!-- Delete button TODO: users shouldnt be able to delete the campaigns-->
+<p>
+    <form method="POST" action="/campaigns/{{campaign._id}}?_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
+</p>

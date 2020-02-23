@@ -92,6 +92,17 @@ app.put('/campaigns/:id', (req, res) => {
         });
 });
 
+// DELETE
+// TODO: users shouldnt be able to delete the campaigns. Fix this later
+app.delete('/campaigns/:id', function (req, res) {
+    console.log("DELETE campaign")
+    Campaign.findByIdAndRemove(req.params.id).then((campaign) => {
+        res.redirect('/');
+    }).catch((err) => {
+        console.log(err.message);
+    });
+});
+
 app.listen(3000, () => {
     console.log("App listening on port 3000!");
 });
