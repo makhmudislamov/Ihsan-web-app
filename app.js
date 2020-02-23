@@ -5,10 +5,10 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 // OUR MOCK ARRAY OF PROJECTS
-// let reviews = [
-//   { title: "Great Review", movieTitle: "Batman II" },
-//   { title: "Great Review", movieTitle: "Batman II" },
-//   { title: "Great Review", movieTitle: "Batman II" },
+// let campaigns = [
+//   { title: "Great campaign", movieTitle: "Batman II" },
+//   { title: "Great campaign", movieTitle: "Batman II" },
+//   { title: "Great campaign", movieTitle: "Batman II" },
 //   { title: "Awesome Movie", movieTitle: "Titanic" }
 // ]
 
@@ -16,16 +16,18 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // data layer - model
-const Review = mongoose.model("Review", {
+const Campaign = mongoose.model("Campaign", {
     title: String,
     description: String,
-    movieTitle: String
+    // TODO: change the following to Number
+    amount: String
 });
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 // connecting to db
-mongoose.connect("mongodb://localhost/rotten-potatoes", {
+// TODO: change db name
+mongoose.connect("mongodb://localhost/ihsan-donations", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -35,9 +37,9 @@ mongoose.connect("mongodb://localhost/rotten-potatoes", {
 
 // INDEX
 app.get("/", (req, res) => {
-    Review.find()
-        .then(reviews => {
-            res.render("reviews-index", { reviews: reviews });
+    Campaign.find()
+        .then(campaigns => {
+            res.render("campaigns-index", { campaigns: campaigns });
         })
         .catch(err => {
             console.log(err);
@@ -45,8 +47,8 @@ app.get("/", (req, res) => {
 });
 
 // NEW
-app.get('/reviews/new', (req, res) => {
-    res.render('reviews-new', {});
+app.get('/campaigns/new', (req, res) => {
+    res.render('campaigns-new', {});
 })
 
 app.listen(3000, () => {
@@ -54,9 +56,9 @@ app.listen(3000, () => {
 })
 
 // CREATE
-app.post('/reviews', (req, res) => {
-        Review.create(req.body).then((review) => {
-        console.log(review);
+app.post('/campaigns', (req, res) => {
+        Campaign.create(req.body).then((campaign) => {
+        console.log(campaign);
         res.redirect('/');
     }).catch((err) => {
         console.log(err.message);

@@ -1,18 +1,18 @@
 <!-- views/reviews-new.handlebars -->
 
-<form method="POST" action="/reviews">
+<form method="POST" action="/campaigns">
     <fieldset>
-        <legend>New Review</legend>
+        <legend>New Campaign</legend>
         <!-- TITLE -->
         <p>
-            <label for="review-title">Title</label><br>
-            <input id="review-title" type="text" name="title" />
+            <label for="campaign-title">Title</label><br>
+            <input id="campaign-title" type="text" name="title" />
         </p>
 
         <!-- MOVIE TITLE -->
         <p>
-            <label for="movie-title">Movie Title</label><br>
-            <input id="movie-title" type="text" name="movieTitle" />
+            <label for="campaign-title">Funding Goal</label><br>
+            <input id="campaign-title" type="text" name="amount" />
         </p>
 
         <!-- DESCRIPTION -->
@@ -24,7 +24,7 @@
 
     <!-- BUTTON -->
     <p>
-        <button type="submit">Save Review</button>
+        <button type="submit">Save Campaign</button>
     </p>
 
 </form>
