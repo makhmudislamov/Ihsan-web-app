@@ -25,6 +25,7 @@ const Campaign = mongoose.model("Campaign", {
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
 // connecting to db
 // TODO: change db name
 mongoose.connect("mongodb://localhost/ihsan-donations", {
@@ -40,6 +41,7 @@ app.get("/", (req, res) => {
     Campaign.find()
         .then(campaigns => {
             res.render("campaigns-index", { campaigns: campaigns });
+            
         })
         .catch(err => {
             console.log(err);
@@ -51,9 +53,6 @@ app.get('/campaigns/new', (req, res) => {
     res.render('campaigns-new', {});
 })
 
-app.listen(3000, () => {
-    console.log('App listening on port 3000!')
-})
 
 // CREATE
 app.post('/campaigns', (req, res) => {
@@ -64,3 +63,16 @@ app.post('/campaigns', (req, res) => {
         console.log(err.message);
     })
 })
+
+// SHOW
+app.get('/campaigns/:id', (req, res) => {
+    Campaign.findById(req.params.id).then((campaign) => {
+        res.render('campaigns-show', { campaign: campaign })
+    }).catch((err) => {
+        console.log(err.message);
+    })
+})
+
+app.listen(3000, () => {
+    console.log("App listening on port 3000!");
+});
