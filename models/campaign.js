@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Campaign = mongoose.model("Campaign", {
     title: String,
     description: String,
-    movieTitle: String
+    amount: String
 });
 
 module.exports = Campaign;
