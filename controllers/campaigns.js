@@ -7,7 +7,9 @@ module.exports = function(app) {
     app.get("/", (req, res) => {
         Campaign.find()
             .then(campaigns => {
-                res.render("campaigns-index", { campaigns: campaigns });              
+                res.render("campaigns-index", { campaigns: campaigns });
+                // returning json
+                // res.json(campaigns)              
             })
             .catch(err => {
                 console.log(err);
@@ -24,6 +26,8 @@ module.exports = function(app) {
         Campaign.create(req.body).then((campaign) => {
             console.log(campaign)
             res.redirect(`/campaigns/${campaign._id}`) // Redirect to campaigns/:id
+            // returning json
+            // res.json(campaign)
         }).catch((err) => {
             console.log(err.message)
         });
@@ -33,6 +37,8 @@ module.exports = function(app) {
     app.get('/campaigns/:id', (req, res) => {
         Campaign.findById(req.params.id).then((campaign) => {
             res.render('campaigns-show', { campaign: campaign })
+            // returning json
+            // res.json(campaign)
         }).catch((err) => {
             console.log(err.message);
         });
