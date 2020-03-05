@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import Navbar from './components/navBar';
 
 class App extends Component {
     // state = {  }
     render() { 
         return ( 
-            <main className="container">
-                <h1>Hello World</h1>
-            </main>
+            <div>
+                <nav>
+                    <Navbar />
+                </nav>
+            </div>
          );
     }
 }
