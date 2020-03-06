@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/navBar';
+import Footer from './components/footer';
 
 class App extends Component {
     // state = {  }
@@ -9,6 +10,14 @@ class App extends Component {
                 <nav>
                     <Navbar />
                 </nav>
+
+                <body>
+                    <h2>Hello World</h2>
+                </body>
+                
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
          );
     }
