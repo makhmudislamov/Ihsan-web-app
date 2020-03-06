@@ -20,7 +20,7 @@ class Footer extends Component {
                     <a href="">Instagram Logo</a>
                 </div>
             </footer>
-         );
+        );
     }
 }
  

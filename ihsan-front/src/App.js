@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 import Navbar from './components/navBar';
 import Footer from './components/footer';
+import Login from './components/login'
 
 class App extends Component {
     // state = {  }
     render() { 
         return ( 
             <div>
-                <nav>
-                    <Navbar />
-                </nav>
-
-                <body>
-                    <h2>Hello World</h2>
-                </body>
-                
-                <footer>
-                    <Footer/>
-                </footer>
+                <Navbar /> 
+                <Login />          
+                <Footer />     
+                    
             </div>
          );
     }
