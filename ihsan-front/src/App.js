@@ -7,12 +7,16 @@ class App extends Component {
     // state = {  }
     render() { 
         return ( 
-            <div>
+            <React.Fragment>
                 <Navbar /> 
-                <Login />          
-                <Footer />     
-                    
-            </div>
+                    <main className="container">
+                        // <Login />
+                        <h2>
+                            Hello world
+                        </h2>
+                    </main>          
+                <Footer />        
+            </React.Fragment>
          );
     }
 }

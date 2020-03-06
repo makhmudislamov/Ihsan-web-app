@@ -4,13 +4,13 @@ class Footer extends Component {
     state = {  }
     render() { 
         return ( 
-            <footer class="nav flex-column">
-                <a class="nav-link active" href="#">Contact Us</a>
-                <li class="nav-item dropdown " >
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" type="button" aria-haspopup="true" aria-expanded="false">Change Language</a>
-                    <div class="dropdown-menu" >
-                        <a class="dropdown-item" href="#">RUS</a>
-                        <a class="dropdown-item" href="#">UZB</a>
+            <footer className="nav flex-column">
+                <a className="nav-link active" href="#">Contact Us</a>
+                <li className="nav-item dropdown " >
+                    <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" type="button" aria-haspopup="true" aria-expanded="false">Change Language</a>
+                    <div className="dropdown-menu" >
+                        <a className="dropdown-item" href="#">RUS</a>
+                        <a className="dropdown-item" href="#">UZB</a>
                     </div>
                 </li>
                 <div className="social-media">
