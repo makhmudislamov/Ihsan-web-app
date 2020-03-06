@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 
-class LoginCard extends Component {
+class LoginForm extends Component {
     // state = {  }
     render() {
         return (
@@ -54,4 +54,4 @@ class LoginCard extends Component {
     }
 }
 
-export default LoginCard;
+export default LoginForm;
