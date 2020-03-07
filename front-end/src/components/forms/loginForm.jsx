@@ -2,12 +2,26 @@ import React, { Component } from "react";
 import { Card, Form, Button } from "react-bootstrap";
 
 class LoginForm extends Component {
-    // state = {  }
+    state = { 
+        account: {
+            username: "",
+            password: ""
+        }
+     }
+
     handleSubmit = e => {
         e.preventDefault();
         console.log("Logged In")
     }
+
+    handleChange = ({currentTarget: input}) => {
+        const account = {...this.state.account};
+        account[input.name] = input.value;
+        this.setState({ account });
+
+    }
     render() {
+        const { account } = this.state
         return (
             // add paddingleft and padding top
             <Card
@@ -23,7 +37,11 @@ class LoginForm extends Component {
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
-                                type="email"
+                                value={account.username}
+                                onChange={this.handleChange}
+                                id="username"
+                                name="username"
+                                type="text"
                                 placeholder="Enter email"
                             />
                             <Form.Text className="text-muted">
@@ -34,7 +52,11 @@ class LoginForm extends Component {
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
-                                type="password"
+                                value={account.password}
+                                onChange={this.handleChange}
+                                id="password"
+                                name="password"
+                                type="text"
                                 placeholder="Password"
                             />
                         </Form.Group>
@@ -44,11 +66,7 @@ class LoginForm extends Component {
                                 label="Keep me logged in"
                             />
                         </Form.Group>
-                        <Button
-                            variant="primary"
-                            type="submit"
-                            to="/"
-                        >
+                        <Button variant="primary" type="submit" to="/">
                             Submit
                         </Button>
                     </Form>
