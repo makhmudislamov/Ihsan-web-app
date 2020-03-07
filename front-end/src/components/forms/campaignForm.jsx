@@ -6,8 +6,13 @@ class CampaignForm extends Component {
     render() { 
         return (
             <React.Fragment>
-                <h2>Create new Campaign</h2>
-                <Form>
+                <Form
+                    style={{
+                        marginLeft: "200px",
+                        marginTop: "150px"
+                    }}
+                    >
+                    <h2>Create new Campaign</h2>
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
                             <InputGroup.Text id="basic-addon1">

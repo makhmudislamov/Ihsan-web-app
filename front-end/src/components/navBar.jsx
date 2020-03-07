@@ -39,8 +39,8 @@ class Navbar extends Component {
                             <Link className="dropdown-item" to="/login">
                                 Login
                             </Link>
-                            <Link className="dropdown-item" to="#">
-                                Sign In
+                            <Link className="dropdown-item" to="/signup">
+                                Sign Up
                             </Link>
                         </div>
                     </li>

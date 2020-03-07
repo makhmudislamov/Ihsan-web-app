@@ -10,7 +10,7 @@ class LoginForm extends Component {
                 style={{
                     width: "30rem",
                     marginLeft: "200px",
-                    marginTop: "250px"
+                    marginTop: "150px"
                 }}
             >
                 <Card.Body>
