@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/navBar';
 import Footer from './components/footer';
-// import LoginForm from './components/forms/loginForm'
 import NewCampaign from './components/newCampaign';
+import HomePage from './components/homePage';
+import LoginForm from './components/forms/loginForm';
 
 class App extends Component {
     // state = {  }
     render() { 
-        return ( 
+        return (
             <React.Fragment>
-                <Navbar /> 
+                <Navbar />
                     <main className="container">
-                        <Route path="/new" component={NewCampaign}/>
-                        
-                    </main>          
-                <Footer />        
+                        <Switch>
+                            <Route path="/" exact component={HomePage} />
+                            <Route path="/new" exact component={NewCampaign} />
+                            <Route path="/login" exact component={LoginForm} />
+                        </Switch>
+                    </main>
+                <Footer />
             </React.Fragment>
-         );
+        );
     }
 }
  
