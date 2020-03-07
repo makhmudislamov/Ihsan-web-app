@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import { Form, Col, Button, Card } from "react-bootstrap";
-import { Toute } from 'react-router-dom';
+import { Form, Button, Card } from "react-bootstrap";
 
 class SignUpForm extends Component {
     // state = {  }
+    handleSubmit = e => {
+        e.preventDefault();
+        console.log("Signed In")
+    }
     render() {
         return (
             <Card
@@ -15,7 +18,7 @@ class SignUpForm extends Component {
             >
                 <Card.Body>
                     <Card.Title>Create Account</Card.Title>
-                    <Form>
+                    <Form onSubmit={this.handleSubmit}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control

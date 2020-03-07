@@ -3,6 +3,10 @@ import { Card, Form, Button } from "react-bootstrap";
 
 class LoginForm extends Component {
     // state = {  }
+    handleSubmit = e => {
+        e.preventDefault();
+        console.log("Logged In")
+    }
     render() {
         return (
             // add paddingleft and padding top
@@ -15,7 +19,7 @@ class LoginForm extends Component {
             >
                 <Card.Body>
                     <Card.Title>Login</Card.Title>
-                    <Form>
+                    <Form onSubmit={this.handleSubmit}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
@@ -43,7 +47,7 @@ class LoginForm extends Component {
                         <Button
                             variant="primary"
                             type="submit"
-                            href="/dashboard"
+                            to="/"
                         >
                             Submit
                         </Button>

@@ -1,54 +1,45 @@
-import React, { Component } from 'react';
-import {InputGroup, FormControl, Form, Button} from 'react-bootstrap';
+import React, { Component } from "react";
+import { Form, Button } from "react-bootstrap";
 
 class CampaignForm extends Component {
     // state = {  }
-    render() { 
-        return (
-            <React.Fragment>
-                <Form
+    handleSubmit = e => {
+        e.preventDafault();
+        // call the server
+        console.log("Submitted");
+    };
+    render() {
+        return (        
+                <Form 
+                    onSubmit={this.handleSubmit}
                     style={{
                         marginLeft: "200px",
                         marginTop: "150px"
                     }}
-                    >
-                    <h2>Create new Campaign</h2>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">
-                                Title
-                            </InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="Title of the campaign"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
+                >
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control type="text" placeholder="Example: Shelter for the homeless" />
+                    </Form.Group>
 
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text>Description</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl as="textarea" aria-label="With textarea" />
-                    </InputGroup>
-
-                    <InputGroup className="mb-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text>$</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl aria-label="Amount (to the nearest dollar)" />
-                        <InputGroup.Append>
-                            <InputGroup.Text>.00</InputGroup.Text>
-                        </InputGroup.Append>
-                    </InputGroup>
-                    <Button variant="primary" type="submit" href="#">
-                        Submit
-                    </Button>
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control as="textarea" rows="3" />
+                    </Form.Group>
+                    <Form.Group controlId="exampleForm.ControlInput1">
+                        <Form.Label>Amount</Form.Label>
+                        <Form.Control type="email" placeholder="$0.00" />
+                    </Form.Group>
+                     <Button
+                            variant="primary"
+                            type="submit"
+                            to="/"
+                        >
+                            Submit
+                        </Button>
                 </Form>
-            </React.Fragment>
         );
     }
 }
- 
+
 export default CampaignForm;

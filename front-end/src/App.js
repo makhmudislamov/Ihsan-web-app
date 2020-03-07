@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/navBar';
 import Footer from './components/footer';
-import NewCampaign from './components/newCampaign';
+// import CampaignForm from './components/campaignForm';
 import HomePage from './components/homePage';
 import LoginForm from './components/forms/loginForm';
 import SignUpForm from './components/forms/signUpForm';
+import CampaignForm from './components/forms/campaignForm';
 class App extends Component {
     // state = {  }
     render() { 
@@ -15,7 +16,7 @@ class App extends Component {
                     <main className="container">
                         <Switch>
                             <Route path="/" exact component={HomePage} />
-                            <Route path="/new" exact component={NewCampaign} />
+                            <Route path="/new" exact component={CampaignForm} />
                             <Route path="/login" exact component={LoginForm} />
                             <Route path="/signup" exact component={SignUpForm} />
                         </Switch>
