@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Card, Form, Button } from "react-bootstrap";
+import Input from './common/input';
 
 class LoginForm extends Component {
     state = { 
@@ -34,32 +35,19 @@ class LoginForm extends Component {
                 <Card.Body>
                     <Card.Title>Login</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control
-                                value={account.username}
-                                onChange={this.handleChange}
-                                id="username"
-                                name="username"
-                                type="text"
-                                placeholder="Enter email"
-                            />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
-                        </Form.Group>
-
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control
-                                value={account.password}
-                                onChange={this.handleChange}
-                                id="password"
-                                name="password"
-                                type="text"
-                                placeholder="Password"
-                            />
-                        </Form.Group>
+                        <Input
+                            name="username"
+                            value={account.username}
+                            label="Email"
+                            onChange={this.handleChange}
+                        />
+                        <Input
+                            name="password"
+                            value={account.password}
+                            label="Password"
+                            onChange={this.handleChange}
+                        />
+                        
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check
                                 type="checkbox"
