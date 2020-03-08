@@ -47,7 +47,6 @@ class LoginForm extends Component {
                             label="Password"
                             onChange={this.handleChange}
                         />
-                        
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check
                                 type="checkbox"

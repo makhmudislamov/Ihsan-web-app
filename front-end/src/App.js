@@ -7,6 +7,7 @@ import HomePage from './components/homePage';
 import LoginForm from './components/forms/loginForm';
 import SignUpForm from './components/forms/signUpForm';
 import CampaignForm from './components/forms/campaignForm';
+import AllCampaigns from './components/allCampaigns';
 class App extends Component {
     // state = {  }
     render() { 
@@ -16,6 +17,7 @@ class App extends Component {
                     <main className="container">
                         <Switch>
                             <Route path="/" exact component={HomePage} />
+                            <Route path="/campaigns" exact component={AllCampaigns} />
                             <Route path="/new" exact component={CampaignForm} />
                             <Route path="/login" exact component={LoginForm} />
                             <Route path="/signup" exact component={SignUpForm} />
