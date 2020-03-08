@@ -2,27 +2,40 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/navBar';
 import Footer from './components/footer';
-// import CampaignForm from './components/campaignForm';
 import HomePage from './components/homePage';
+import CampaignDetails from "./components/campaignDetails";
+import AllCampaigns from './components/allCampaigns';
 import LoginForm from './components/forms/loginForm';
 import SignUpForm from './components/forms/signUpForm';
 import CampaignForm from './components/forms/campaignForm';
-import AllCampaigns from './components/allCampaigns';
 class App extends Component {
     // state = {  }
     render() { 
         return (
             <React.Fragment>
                 <Navbar />
-                    <main className="container">
-                        <Switch>
-                            <Route path="/" exact component={HomePage} />
-                            <Route path="/campaigns" exact component={AllCampaigns} />
-                            <Route path="/new" exact component={CampaignForm} />
-                            <Route path="/login" exact component={LoginForm} />
-                            <Route path="/signup" exact component={SignUpForm} />
-                        </Switch>
-                    </main>
+                <main className="container">
+                    <Switch>
+                        <Route path="/" exact component={HomePage} />
+                        <Route
+                            exact
+                            path="/campaigns"
+                            component={AllCampaigns}
+                        />
+                        <Route
+                            exact
+                            path="/campaigns/new"
+                            component={CampaignForm}
+                        />
+                        <Route
+                            exact
+                            path="/campaigns/:id"
+                            component={CampaignDetails}
+                        />
+                        <Route path="/login" exact component={LoginForm} />
+                        <Route path="/signup" exact component={SignUpForm} />
+                    </Switch>
+                </main>
                 <Footer />
             </React.Fragment>
         );

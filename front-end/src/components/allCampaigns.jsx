@@ -9,7 +9,7 @@ class AllCampaigns extends Component {
                 <h2>
                     All posted campaigns will be here
                 </h2>
-                <Link to="/new">New Campaign</Link>
+                <Link to="/campaigns/new">New Campaign</Link>
             </React.Fragment>
         );
     }

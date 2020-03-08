@@ -1,1 +1,7 @@
 handleSubmit on newCampaign form is not working
+
+            /*<Route
+                                exact
+                                path="/campaigns/:id"
+                                component={CampaignDetails}
+                            /> */
