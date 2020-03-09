@@ -4,15 +4,16 @@ import Input from './common/input';
 import TextArea from "./common/textarea";
 
 class CampaignForm extends Component {
-    state = { 
+    state = {
         campaign: {
             title: "",
             description: "",
             amount: ""
         }
-     }
+    };
+
     handleSubmit = e => {
-        e.preventDafault();
+        e.preventDefault();
         // call the server
         console.log("Submitted");
     };
@@ -23,7 +24,7 @@ class CampaignForm extends Component {
         this.setState({ campaign });
     };
     render() {
-        const { campaign } = this.state
+        const { campaign } = this.state;
 
         return (
             <Card
@@ -42,7 +43,6 @@ class CampaignForm extends Component {
                             onChange={this.handleChange}
                             placeholder="Shelter for the homeless"
                         />
-
                         <TextArea
                             as="textarea"
                             name="description"
