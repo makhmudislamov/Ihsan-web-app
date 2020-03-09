@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CampaignDetails extends Component {
     // state = {  }
     handleSave = () => {
-        // this.props.history.push(`/campaigns/${this.campaign._id}`)
+        // this.props.history.replace(`/campaigns/${this.campaign._id}`)
     }
     render() { 
         return ( 
