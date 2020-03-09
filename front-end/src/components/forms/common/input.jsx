@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Form, Button } from "react-bootstrap";
-const Input = ({ name, label, value, onChange }) => {
+const Input = ({ name, label, placeholder, value, onChange }) => {
     return (
         <Form.Group controlId="formBasicEmail">
             <Form.Label for={name}>{label}</Form.Label>
@@ -10,11 +10,9 @@ const Input = ({ name, label, value, onChange }) => {
                 id={name}
                 name={name}
                 type="text"
-                placeholder="Enter email"
+                placeholder={placeholder}
+              
             />
-            <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-            </Form.Text>
         </Form.Group>
     );
 }

@@ -1,42 +1,69 @@
 import React, { Component } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Card, Form, Button } from "react-bootstrap";
+import Input from './common/input';
+import TextArea from "./common/textarea";
 
 class CampaignForm extends Component {
-    // state = {  }
+    state = { 
+        campaign: {
+            title: "",
+            description: "",
+            amount: ""
+        }
+     }
     handleSubmit = e => {
         e.preventDafault();
         // call the server
         console.log("Submitted");
     };
+
+    handleChange = ({ currentTarget: input }) => {
+        const campaign = { ...this.state.campaign };
+        campaign[input.name] = input.value;
+        this.setState({ campaign });
+    };
     render() {
+        const { campaign } = this.state
+
         return (
-            <Form
-                onSubmit={this.handleSubmit}
+            <Card
                 style={{
                     marginLeft: "200px",
                     marginTop: "150px"
                 }}
             >
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Example: Shelter for the homeless"
-                    />
-                </Form.Group>
+                <Card.Body>
+                    <Card.Title>Create new campaign</Card.Title>
+                    <Form onSubmit={this.handleSubmit}>
+                        <Input
+                            name="title"
+                            value={campaign.title}
+                            label="Title"
+                            onChange={this.handleChange}
+                            placeholder="Shelter for the homeless"
+                        />
 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control as="textarea" rows="3" />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Amount</Form.Label>
-                    <Form.Control type="email" placeholder="$0.00" />
-                </Form.Group>
-                <Button variant="primary" type="submit" to="/">
-                    Submit
-                </Button>
-            </Form>
+                        <TextArea
+                            as="textarea"
+                            name="description"
+                            value={campaign.description}
+                            label="Description"
+                            onChange={this.handleChange}
+                            placeholder="Details of your campaign"
+                        />
+                        <Input
+                            name="amount"
+                            value={campaign.amount}
+                            label="Amount to raise "
+                            onChange={this.handleChange}
+                            placeholder="$5,000"
+                        />
+                        <Button variant="primary" type="submit" to="/">
+                            Submit
+                        </Button>
+                    </Form>
+                </Card.Body>
+            </Card>
         );
     }
 }

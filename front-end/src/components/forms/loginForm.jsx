@@ -40,12 +40,17 @@ class LoginForm extends Component {
                             value={account.username}
                             label="Email"
                             onChange={this.handleChange}
+                            placeholder="Enter Email"
                         />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
                         <Input
                             name="password"
                             value={account.password}
                             label="Password"
                             onChange={this.handleChange}
+                            placeholder="Enter Password"
                         />
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check
