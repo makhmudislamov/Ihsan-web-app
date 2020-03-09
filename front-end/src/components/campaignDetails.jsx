@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
 class CampaignDetails extends Component {
-    state = {  }
+    // state = {  }
+    handleSave = () => {
+        // this.props.history.push(`/campaigns/${this.campaign._id}`)
+    }
     render() { 
         return ( 
-            <h2>One campaign details are here</h2>
+            <React.Fragment>
+                <h2>One campaign details are here</h2>
+
+                <button onClick={this.handleSave}>Save</button>
+            </React.Fragment>
          );
     }
 }
