@@ -1,9 +1,8 @@
 import React from "react";
-import { Form, Button, Card } from "react-bootstrap";
 import Joi from "joi-browser";
+import { Form, Button, Card } from "react-bootstrap";
 import Input from './common/input';
-import FormMethods from './common/form';
-
+import FormMethods from './common/formMethods';
 class SignUpForm extends FormMethods {
     state = {
         data: {
@@ -15,9 +14,15 @@ class SignUpForm extends FormMethods {
     };
 
     schema = {
-        username: Joi.string().required(),
-        password: Joi.string().required(),
-        passwordConfirm: Joi.string().required()
+        username: Joi.string()
+            .required()
+            .label("Username"),
+        password: Joi.string()
+            .required()
+            .label("Password"),
+        passwordConfirm: Joi.string()
+            .required()
+            .label("Password confirmation")
     };
 
     doSubmit = () => {
@@ -71,7 +76,12 @@ class SignUpForm extends FormMethods {
                                 label="Keep me logged in"
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit" to="/">
+                        <Button
+                            disabled={this.validate()}
+                            variant="primary"
+                            type="submit"
+                            to="/"
+                        >
                             Submit
                         </Button>
                     </Form>

@@ -3,9 +3,8 @@ import { Card, Form, Button } from "react-bootstrap";
 import Joi from "joi-browser";
 import Input from './common/input';
 import TextArea from "./common/textarea";
-import FormMethods from './common/form';
-
-class dataForm extends FormMethods {
+import FormMethods from './common/formMethods';
+class CampaignForm extends FormMethods {
     state = {
         data: {
             title: "",
@@ -16,9 +15,15 @@ class dataForm extends FormMethods {
     };
 
     schema = {
-        title: Joi.string().required(),
-        description: Joi.string().required(),
-        amount: Joi.string().required() // later change this to int or float
+        title: Joi.string()
+            .required()
+            .label("Title"),
+        description: Joi.string()
+            .required()
+            .label("Description"),
+        amount: Joi.string()
+            .required()
+            .label("Amount") // later change this to int or float
     };
 
     doSubmit = () => {
@@ -64,7 +69,12 @@ class dataForm extends FormMethods {
                             placeholder="$5,000"
                             error={errors.amount}
                         />
-                        <Button variant="primary" type="submit" to="/">
+                        <Button
+                            disabled={this.validate()}
+                            variant="primary"
+                            type="submit"
+                            to="/"
+                        >
                             Submit
                         </Button>
                     </Form>
@@ -74,4 +84,4 @@ class dataForm extends FormMethods {
     }
 }
 
-export default dataForm;
+export default CampaignForm;

@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
-import Joi, { join } from "joi-browser";
+import Joi from "joi-browser";
 import Input from './common/input';
-import FormMethods from './common/form';
+import FormMethods from './common/formMethods';
+
 
 class LoginForm extends FormMethods {
     state = { 
@@ -14,9 +15,9 @@ class LoginForm extends FormMethods {
     }
 
     schema = {
-        username: Joi.string().required(),
-        password: Joi.string().required()
-    }
+        username: Joi.string().required().label("Username"),
+        password: Joi.string().required().label("Password")
+    };
 
     doSubmit = () => {
         // call the server
@@ -63,7 +64,11 @@ class LoginForm extends FormMethods {
                                 label="Keep me logged in"
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit" to="/">
+                        <Button disabled={this.validate()} 
+                            variant="primary" 
+                            type="submit" 
+                            to="/"
+                        >
                             Submit
                         </Button>
                     </Form>

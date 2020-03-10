@@ -9,6 +9,7 @@ import NotFound from './components/notFound';
 import LoginForm from './components/forms/loginForm';
 import SignUpForm from './components/forms/signUpForm';
 import CampaignForm from './components/forms/campaignForm';
+import { Joi } from 'joi-browser';
 class App extends Component {
     // state = {  }
     render() { 
