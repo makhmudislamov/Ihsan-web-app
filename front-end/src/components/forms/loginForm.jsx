@@ -1,7 +1,6 @@
 import React from "react";
-import { Card, Form, Button } from "react-bootstrap";
+import { Card, Form} from "react-bootstrap";
 import Joi from "joi";
-import Input from './common/input';
 import FormMethods from './common/formMethods';
 
 
@@ -43,7 +42,7 @@ class LoginForm extends FormMethods {
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
-                        {this.renderInput("password", "Password", "Enter Password")}
+                        {this.renderInput("password", "Password", "Enter Password", "password")}
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check
                                 type="checkbox"

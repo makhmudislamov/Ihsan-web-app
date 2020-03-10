@@ -1,7 +1,6 @@
 import React from "react";
 import Joi from "joi";
 import { Form, Button, Card } from "react-bootstrap";
-import Input from './common/input';
 import FormMethods from './common/formMethods';
 class SignUpForm extends FormMethods {
     state = {
@@ -54,12 +53,14 @@ class SignUpForm extends FormMethods {
                         {this.renderInput(
                             "password",
                             "Password",
-                            "Enter Password"
+                            "Enter Password",
+                            "password"
                         )}
                         {this.renderInput(
                             "passwordConfirm",
                             "Confirm Password",
-                            "Confirm Password"
+                            "Confirm Password",
+                            "password"
                         )}
                         <Form.Group>
                             <Form.Check

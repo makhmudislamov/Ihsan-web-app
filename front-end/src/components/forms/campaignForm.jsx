@@ -1,8 +1,6 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
 import Joi from "joi";
-import Input from './common/input';
-import TextArea from "./common/textarea";
 import FormMethods from './common/formMethods';
 class CampaignForm extends FormMethods {
     state = {

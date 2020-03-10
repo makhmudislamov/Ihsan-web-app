@@ -60,10 +60,11 @@ class FormMethods extends Component {
         );
     };
 
-    renderInput(name, label, placeholder) {
+    renderInput(name, label, placeholder, type="text") {
         const { data, errors } = this.state;
         return (
             <Input
+                type={type}
                 name={name}
                 value={data[name]}
                 label={label}
