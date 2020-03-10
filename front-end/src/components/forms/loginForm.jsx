@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
-import Joi from "joi-browser";
+import Joi from "joi";
 import Input from './common/input';
 import FormMethods from './common/formMethods';
 
@@ -26,7 +26,7 @@ class LoginForm extends FormMethods {
 
     
     render() {
-        const { data, errors } = this.state
+        
         return (
             // add paddingleft and padding top
             <Card
@@ -39,38 +39,18 @@ class LoginForm extends FormMethods {
                 <Card.Body>
                     <Card.Title>Login</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
-                        <Input
-                            name="username"
-                            value={data.username}
-                            label="Email"
-                            onChange={this.handleChange}
-                            placeholder="Enter Email"
-                            error={errors.username}
-                        />
+                        {this.renderInput("username", "Username", "Enter Email")}
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
-                        <Input
-                            name="password"
-                            value={data.password}
-                            label="Password"
-                            onChange={this.handleChange}
-                            placeholder="Enter Password"
-                            error={errors.password}
-                        />
+                        {this.renderInput("password", "Password", "Enter Password")}
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check
                                 type="checkbox"
                                 label="Keep me logged in"
                             />
                         </Form.Group>
-                        <Button disabled={this.validate()} 
-                            variant="primary" 
-                            type="submit" 
-                            to="/"
-                        >
-                            Submit
-                        </Button>
+                        {this.renderButton("Login")}
                     </Form>
                 </Card.Body>
             </Card>

@@ -1,5 +1,8 @@
-import { Component } from 'react';
-import Joi from "joi-browser";
+import React, { Component } from "react";
+import { Button } from 'react-bootstrap';
+import Joi from "joi";
+import Input from './input';
+import TextArea from './textarea';
 
 class FormMethods extends Component {
     state = {
@@ -44,6 +47,47 @@ class FormMethods extends Component {
         data[input.name] = input.value;
         this.setState({ data, errors });
     };
+
+    renderButton(label) {
+        return (
+            <Button
+                disabled={this.validate()}
+                variant="primary"
+                type="submit"
+            >
+                {label}
+            </Button>
+        );
+    };
+
+    renderInput(name, label, placeholder) {
+        const { data, errors } = this.state;
+        return (
+            <Input
+                name={name}
+                value={data[name]}
+                label={label}
+                onChange={this.handleChange}
+                placeholder={placeholder}
+                error={errors[name]}
+            />
+        );
+    }
+
+    renderTextArea(name, label, placeholder) {
+        const { data, errors } = this.state;
+        return (
+            <TextArea
+                as="textarea"
+                name={name}
+                value={data[name]}
+                label={label}
+                onChange={this.handleChange}
+                placeholder={placeholder}
+                error={errors[name]}
+            />
+        );
+    }
 }
  
 export default FormMethods;

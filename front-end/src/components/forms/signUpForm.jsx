@@ -1,5 +1,5 @@
 import React from "react";
-import Joi from "joi-browser";
+import Joi from "joi";
 import { Form, Button, Card } from "react-bootstrap";
 import Input from './common/input';
 import FormMethods from './common/formMethods';
@@ -43,47 +43,31 @@ class SignUpForm extends FormMethods {
                 <Card.Body>
                     <Card.Title>Create data</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
-                        <Input
-                            name="username"
-                            value={data.username}
-                            label="Email"
-                            onChange={this.handleChange}
-                            placeholder="Enter Email"
-                            error={errors.username}
-                        />
+                        {this.renderInput(
+                            "username",
+                            "Username",
+                            "Enter Email"
+                        )}
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
-                        <Input
-                            name="password"
-                            value={data.password}
-                            label="Password"
-                            onChange={this.handleChange}
-                            placeholder="Enter Password"
-                            error={errors.password}
-                        />
-                        <Input
-                            name="passwordConfirm"
-                            value={data.passwordConfirm}
-                            label="Confirm Password"
-                            onChange={this.handleChange}
-                            placeholder="Confirm Password"
-                            error={errors.passwordConfirm}
-                        />
-                        <Form.Group controlId="formBasicCheckbox">
+                        {this.renderInput(
+                            "password",
+                            "Password",
+                            "Enter Password"
+                        )}
+                        {this.renderInput(
+                            "passwordConfirm",
+                            "Confirm Password",
+                            "Confirm Password"
+                        )}
+                        <Form.Group>
                             <Form.Check
                                 type="checkbox"
                                 label="Keep me logged in"
                             />
                         </Form.Group>
-                        <Button
-                            disabled={this.validate()}
-                            variant="primary"
-                            type="submit"
-                            to="/"
-                        >
-                            Submit
-                        </Button>
+                        {this.renderButton("Sign Up")}
                     </Form>
                 </Card.Body>
             </Card>
