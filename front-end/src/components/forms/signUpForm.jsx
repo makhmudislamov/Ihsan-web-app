@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import Input from './common/input';
+import FormMethods from './common/form';
 
-class SignUpForm extends Component {
+class SignUpForm extends FormMethods {
     state = {
-        account: {
+        data: {
             username: "",
             password: "",
             passwordConfirm: ""
@@ -12,40 +13,14 @@ class SignUpForm extends Component {
         errors: {}
     };
 
-    validate = () => {
-        const errors = {};
-        const { account } = this.state;
-        if (account.username.trim() === "") {
-            errors.username = "Username is required";
-        }
-        if (account.password.trim() === "") {
-            errors.password = "Password is required";
-        }
-        if (account.passwordConfirm.trim() === "") {
-            errors.passwordConfirm = "Please confirm your password";
-        }
-
-        return Object.keys(errors).length === 0 ? null : errors;
-    };
-
-    handleSubmit = e => {
-        e.preventDefault();
-
-        const errors = this.validate();
-        this.setState({ errors: errors || {} });
-        if (errors) return;
-
+    doSubmit = () => {
+        // call ther server
         console.log("Signed Up");
-    };
-
-    handleChange = ({ currentTarget: input }) => {
-        const account = { ...this.state.account };
-        account[input.name] = input.value;
-        this.setState({ account });
-    };
+        
+    }
 
     render() {
-        const { account, errors } = this.state;
+        const { data, errors } = this.state;
         return (
             <Card
                 style={{
@@ -55,11 +30,11 @@ class SignUpForm extends Component {
                 }}
             >
                 <Card.Body>
-                    <Card.Title>Create Account</Card.Title>
+                    <Card.Title>Create data</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
                         <Input
                             name="username"
-                            value={account.username}
+                            value={data.username}
                             label="Email"
                             onChange={this.handleChange}
                             placeholder="Enter Email"
@@ -70,7 +45,7 @@ class SignUpForm extends Component {
                         </Form.Text>
                         <Input
                             name="password"
-                            value={account.password}
+                            value={data.password}
                             label="Password"
                             onChange={this.handleChange}
                             placeholder="Enter Password"
@@ -78,7 +53,7 @@ class SignUpForm extends Component {
                         />
                         <Input
                             name="passwordConfirm"
-                            value={account.passwordConfirm}
+                            value={data.passwordConfirm}
                             label="Confirm Password"
                             onChange={this.handleChange}
                             placeholder="Confirm Password"

@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import Input from './common/input';
 import TextArea from "./common/textarea";
+import FormMethods from './common/form';
 
-class CampaignForm extends Component {
+class dataForm extends FormMethods {
     state = {
-        campaign: {
+        data: {
             title: "",
             description: "",
             amount: ""
@@ -13,39 +14,13 @@ class CampaignForm extends Component {
         errors: {}
     };
 
-    validate = () => {
-        const errors = {};
-        const { campaign } = this.state;
-        if (campaign.title.trim() === "") {
-            errors.title = "Title is required";
-        }
-        if (campaign.description.trim() === "") {
-            errors.description = "Description is required";
-        }
-        if (campaign.amount.trim() === "") {
-            errors.amount = "Funding amount is required";
-        }
-
-        return Object.keys(errors).length === 0 ? null : errors;
+    doSubmit = () => {
+        // call ther server
+        console.log("Created new campaign");
     };
 
-    handleSubmit = e => {
-        e.preventDefault();
-
-        const errors = this.validate();
-        this.setState({ errors: errors || {} });
-        if (errors) return;
-
-        console.log("Submitted");
-    };
-
-    handleChange = ({ currentTarget: input }) => {
-        const campaign = { ...this.state.campaign };
-        campaign[input.name] = input.value;
-        this.setState({ campaign });
-    };
     render() {
-        const { campaign, errors } = this.state;
+        const { data, errors } = this.state;
 
         return (
             <Card
@@ -55,11 +30,11 @@ class CampaignForm extends Component {
                 }}
             >
                 <Card.Body>
-                    <Card.Title>Create new campaign</Card.Title>
+                    <Card.Title>Create new data</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
                         <Input
                             name="title"
-                            value={campaign.title}
+                            value={data.title}
                             label="Title"
                             onChange={this.handleChange}
                             placeholder="Shelter for the homeless"
@@ -68,15 +43,15 @@ class CampaignForm extends Component {
                         <TextArea
                             as="textarea"
                             name="description"
-                            value={campaign.description}
+                            value={data.description}
                             label="Description"
                             onChange={this.handleChange}
-                            placeholder="Details of your campaign"
+                            placeholder="Details of your data"
                             error={errors.description}
                         />
                         <Input
                             name="amount"
-                            value={campaign.amount}
+                            value={data.amount}
                             label="Amount to raise "
                             onChange={this.handleChange}
                             placeholder="$5,000"
@@ -92,4 +67,4 @@ class CampaignForm extends Component {
     }
 }
 
-export default CampaignForm;
+export default dataForm;
