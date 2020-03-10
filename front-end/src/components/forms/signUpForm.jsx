@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
+import Joi from "joi-browser";
 import Input from './common/input';
 import FormMethods from './common/form';
 
@@ -13,11 +14,16 @@ class SignUpForm extends FormMethods {
         errors: {}
     };
 
+    schema = {
+        username: Joi.string().required(),
+        password: Joi.string().required(),
+        passwordConfirm: Joi.string().required()
+    };
+
     doSubmit = () => {
         // call ther server
         console.log("Signed Up");
-        
-    }
+    };
 
     render() {
         const { data, errors } = this.state;

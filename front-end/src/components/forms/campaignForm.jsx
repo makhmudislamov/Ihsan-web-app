@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
+import Joi from "joi-browser";
 import Input from './common/input';
 import TextArea from "./common/textarea";
 import FormMethods from './common/form';
@@ -12,6 +13,12 @@ class dataForm extends FormMethods {
             amount: ""
         },
         errors: {}
+    };
+
+    schema = {
+        title: Joi.string().required(),
+        description: Joi.string().required(),
+        amount: Joi.string().required() // later change this to int or float
     };
 
     doSubmit = () => {

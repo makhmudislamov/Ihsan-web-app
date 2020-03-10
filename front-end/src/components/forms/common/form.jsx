@@ -1,9 +1,11 @@
 import { Component } from 'react';
-
+import Joi from "joi-browser";
 class FormMethods extends Component {
     state = { data: {}, errors: {} };
 
     validate = () => {
+        const result  = Joi.validate(this.state.data, this.scheme. {abortEarly: false})
+
         const errors = {};
         const { data } = this.state;
         if (data.username.trim() === "") {
@@ -26,10 +28,19 @@ class FormMethods extends Component {
         this.doSubmit();
     };
 
+    validateProperty = (input) => {
+
+    }
+
     handleChange = ({ currentTarget: input }) => {
+        const errors = {...this.state.errors}
+        const errorMessage = this.validateProperty(input);
+        if (errorMessage) errors[input.name] = errorMessage;
+        else delete errors[input.name];
+
         const data = { ...this.state.data };
         data[input.name] = input.value;
-        this.setState({ data });
+        this.setState({ data, errors });
     };
 }
  

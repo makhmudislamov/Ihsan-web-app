@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Form, Button } from "react-bootstrap";
+import Joi, { join } from "joi-browser";
 import Input from './common/input';
 import FormMethods from './common/form';
 
@@ -10,6 +11,11 @@ class LoginForm extends FormMethods {
             password: ""
         },
         errors: {}
+    }
+
+    schema = {
+        username: Joi.string().required(),
+        password: Joi.string().required()
     }
 
     doSubmit = () => {
