@@ -8,12 +8,34 @@ class SignUpForm extends Component {
             username: "",
             password: "",
             passwordConfirm: ""
+        },
+        errors: {}
+    };
+
+    validate = () => {
+        const errors = {};
+        const { account } = this.state;
+        if (account.username.trim() === "") {
+            errors.username = "Username is required";
         }
+        if (account.password.trim() === "") {
+            errors.password = "Password is required";
+        }
+        if (account.passwordConfirm.trim() === "") {
+            errors.passwordConfirm = "Please confirm your password";
+        }
+
+        return Object.keys(errors).length === 0 ? null : errors;
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("Signed In");
+
+        const errors = this.validate();
+        this.setState({ errors: errors || {} });
+        if (errors) return;
+
+        console.log("Signed Up");
     };
 
     handleChange = ({ currentTarget: input }) => {
@@ -23,7 +45,7 @@ class SignUpForm extends Component {
     };
 
     render() {
-        const { account } = this.state;
+        const { account, errors } = this.state;
         return (
             <Card
                 style={{
@@ -41,6 +63,7 @@ class SignUpForm extends Component {
                             label="Email"
                             onChange={this.handleChange}
                             placeholder="Enter Email"
+                            error={errors.username}
                         />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
@@ -51,13 +74,15 @@ class SignUpForm extends Component {
                             label="Password"
                             onChange={this.handleChange}
                             placeholder="Enter Password"
+                            error={errors.password}
                         />
                         <Input
                             name="passwordConfirm"
                             value={account.passwordConfirm}
                             label="Confirm Password"
                             onChange={this.handleChange}
-                            placeholder="Comfirm Password"
+                            placeholder="Confirm Password"
+                            error={errors.passwordConfirm}
                         />
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check

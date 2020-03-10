@@ -9,12 +9,33 @@ class CampaignForm extends Component {
             title: "",
             description: "",
             amount: ""
+        },
+        errors: {}
+    };
+
+    validate = () => {
+        const errors = {};
+        const { campaign } = this.state;
+        if (campaign.title.trim() === "") {
+            errors.title = "Title is required";
         }
+        if (campaign.description.trim() === "") {
+            errors.description = "Description is required";
+        }
+        if (campaign.amount.trim() === "") {
+            errors.amount = "Funding amount is required";
+        }
+
+        return Object.keys(errors).length === 0 ? null : errors;
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        // call the server
+
+        const errors = this.validate();
+        this.setState({ errors: errors || {} });
+        if (errors) return;
+
         console.log("Submitted");
     };
 
@@ -24,7 +45,7 @@ class CampaignForm extends Component {
         this.setState({ campaign });
     };
     render() {
-        const { campaign } = this.state;
+        const { campaign, errors } = this.state;
 
         return (
             <Card
@@ -42,6 +63,7 @@ class CampaignForm extends Component {
                             label="Title"
                             onChange={this.handleChange}
                             placeholder="Shelter for the homeless"
+                            error={errors.title}
                         />
                         <TextArea
                             as="textarea"
@@ -50,6 +72,7 @@ class CampaignForm extends Component {
                             label="Description"
                             onChange={this.handleChange}
                             placeholder="Details of your campaign"
+                            error={errors.description}
                         />
                         <Input
                             name="amount"
@@ -57,6 +80,7 @@ class CampaignForm extends Component {
                             label="Amount to raise "
                             onChange={this.handleChange}
                             placeholder="$5,000"
+                            error={errors.amount}
                         />
                         <Button variant="primary" type="submit" to="/">
                             Submit

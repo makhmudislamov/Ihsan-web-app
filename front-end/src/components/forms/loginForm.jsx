@@ -12,14 +12,23 @@ class LoginForm extends Component {
      }
 
     validate = () => {
-        return {username: "Username is required"}
+        const errors = {}
+        const {account} = this.state
+        if (account.username.trim() === "") {
+            errors.username = "Username is required"
+        }
+        if (account.password.trim() === "") {
+            errors.password = "Password is required"
+        }
+
+        return Object.keys(errors).length === 0 ? null : errors;
     }
 
     handleSubmit = e => {
         e.preventDefault();
 
         const errors = this.validate();
-        this.setState({errors});
+        this.setState({errors: errors || {} });
         if (errors) return;
 
         console.log("Logged In")
@@ -32,7 +41,7 @@ class LoginForm extends Component {
 
     }
     render() {
-        const { account } = this.state
+        const { account, errors } = this.state
         return (
             // add paddingleft and padding top
             <Card
@@ -51,6 +60,7 @@ class LoginForm extends Component {
                             label="Email"
                             onChange={this.handleChange}
                             placeholder="Enter Email"
+                            error={errors.username}
                         />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
@@ -61,6 +71,7 @@ class LoginForm extends Component {
                             label="Password"
                             onChange={this.handleChange}
                             placeholder="Enter Password"
+                            error={errors.password}
                         />
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check

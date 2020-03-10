@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Card, Form, Button } from "react-bootstrap";
-const Input = ({ name, label, placeholder, value, onChange }) => {
+import React from 'react';
+import { Form } from "react-bootstrap";
+const Input = ({ name, label, placeholder, value, error, onChange }) => {
     return (
-        <Form.Group controlId="formBasicEmail">
-            <Form.Label for={name}>{label}</Form.Label>
+        <Form.Group >
+            <Form.Label htmlFor={name}>{label}</Form.Label>
             <Form.Control
                 value={value}
                 onChange={onChange}
@@ -13,6 +13,7 @@ const Input = ({ name, label, placeholder, value, onChange }) => {
                 placeholder={placeholder}
               
             />
+            {error && <div className="alert alert-danger">{error}</div>}
         </Form.Group>
     );
 }
