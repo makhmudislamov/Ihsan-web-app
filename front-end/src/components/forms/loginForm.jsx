@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Form} from "react-bootstrap";
-import Joi from "joi";
+import Joi from "joi-browser";
 import FormMethods from './common/formMethods';
 
 

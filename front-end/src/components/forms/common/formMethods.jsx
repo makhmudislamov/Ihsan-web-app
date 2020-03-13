@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
-import Joi from "joi";
+import Joi from "joi-browser";
 import Input from './input';
 import TextArea from './textarea';
 

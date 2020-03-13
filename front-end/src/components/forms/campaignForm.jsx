@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
-import Joi from "joi";
+import Joi from "joi-browser";
 import FormMethods from './common/formMethods';
 class CampaignForm extends FormMethods {
     state = {
@@ -40,7 +40,7 @@ class CampaignForm extends FormMethods {
                 }}
             >
                 <Card.Body>
-                    <Card.Title>Create new data</Card.Title>
+                    <Card.Title>Create new campaign</Card.Title>
                     <Form onSubmit={this.handleSubmit}>
                         {this.renderInput(
                             "title",

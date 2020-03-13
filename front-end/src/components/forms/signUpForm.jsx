@@ -1,5 +1,5 @@
 import React from "react";
-import Joi from "joi";
+import Joi from "joi-browser";
 import { Form, Button, Card } from "react-bootstrap";
 import FormMethods from './common/formMethods';
 class SignUpForm extends FormMethods {
@@ -30,7 +30,7 @@ class SignUpForm extends FormMethods {
     };
 
     render() {
-        const { data, errors } = this.state;
+        
         return (
             <Card
                 style={{

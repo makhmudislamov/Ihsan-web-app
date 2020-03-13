@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import axios from 'axios';
+import Joi from 'joi-browser';
 import Navbar from './components/navBar';
 import Footer from './components/footer';
 import HomePage from './components/homePage';
@@ -9,8 +11,16 @@ import NotFound from './components/notFound';
 import LoginForm from './components/forms/loginForm';
 import SignUpForm from './components/forms/signUpForm';
 import CampaignForm from './components/forms/campaignForm';
+
+
 class App extends Component {
     // state = {  }
+
+    // async componentDidMount() {
+    //     const response = await axios.get("mongodb://localhost/ihsan-donations");
+    //     console.log(response);
+        
+    // }
     render() { 
         return (
             <React.Fragment>
