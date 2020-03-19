@@ -16,11 +16,11 @@ import CampaignForm from './components/forms/campaignForm';
 class App extends Component {
     // state = {  }
 
-    // async componentDidMount() {
-    //     const response = await axios.get("mongodb://localhost/ihsan-donations");
-    //     console.log(response);
+    async componentDidMount() {
+        const response = await axios.get("mongodb://localhost/ihsan-donations");
+        console.log(response);
         
-    // }
+    }
     render() { 
         return (
             <React.Fragment>

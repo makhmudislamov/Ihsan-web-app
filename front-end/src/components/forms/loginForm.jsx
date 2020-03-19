@@ -9,6 +9,7 @@ class LoginForm extends FormMethods {
         data: {
             username: "",
             password: ""
+
         },
         errors: {}
     }
@@ -16,11 +17,12 @@ class LoginForm extends FormMethods {
     schema = {
         username: Joi.string().required().label("Username"),
         password: Joi.string().required().label("Password")
+        
     };
 
     doSubmit = () => {
         // call the server
-        console.log("Logged In")
+        console.log("Created an account")
     }
 
     

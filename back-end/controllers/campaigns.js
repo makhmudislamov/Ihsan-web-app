@@ -1,7 +1,7 @@
 
 const Campaign = require("../models/campaign");
 
-module.exports = function(app) {
+module.exports = (app) => {
 
     // INDEX
     app.get("/", (req, res) => {

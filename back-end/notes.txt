@@ -12,3 +12,8 @@ TODO >> Check solution: https://handlebarsjs.com/api-reference/runtime-options.h
 To avoid XSS attacks they changed some configuration.
 My solution was: npm install handlebars@4.5.3 - older version of handlebars
 since on the front end I will use react
+
+
+During Mongodb connection
+IP (192.168.4.23) whitelisting didnt work
+so in the Mongodb atlas had to "connect from anywhere"
