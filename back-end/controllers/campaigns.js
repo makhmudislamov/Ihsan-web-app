@@ -1,4 +1,3 @@
-
 const Campaign = require("../models/campaign");
 
 module.exports = (app) => {
@@ -7,9 +6,10 @@ module.exports = (app) => {
     app.get("/", (req, res) => {
         Campaign.find()
             .then(campaigns => {
-                res.render("campaigns-index", { campaigns: campaigns });
+                // res.render("campaigns-index", { campaigns: campaigns });
                 // returning json
-                // res.json(campaigns)              
+                res.json(campaigns) 
+            
             })
             .catch(err => {
                 console.log(err);
@@ -28,6 +28,7 @@ module.exports = (app) => {
             res.redirect(`/campaigns/${campaign._id}`) // Redirect to campaigns/:id
             // returning json
             // res.json(campaign)
+            // res.send...
         }).catch((err) => {
             console.log(err.message)
         });

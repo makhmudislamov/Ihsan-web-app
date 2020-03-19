@@ -31,16 +31,14 @@ mongoose
         console.log(error);
 });
 
-
-
 let db = mongoose.connection;
 mongoose.set("useFindAndModify", false);
 db.once("open", () => console.log("connected to the database"));
 // checks if connection with the database is successful
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.listen(3000, () => {
-    console.log("App listening on port 3000!");
+app.listen(5000, () => {
+    console.log("App listening on port 5000!");
     console.log(ip.address());
 });
 

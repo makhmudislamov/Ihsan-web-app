@@ -14,14 +14,46 @@ import CampaignForm from './components/forms/campaignForm';
 
 
 class App extends Component {
-    // state = {  }
+    state = {
+        data: [],
+        id: 0,
+        message: null,
+        intervalIsSet: false,
+        idToDelete: null,
+        idToUpdate: null,
+        objectToUpdate: null
+    };
 
-    async componentDidMount() {
-        const response = await axios.get("mongodb://localhost/ihsan-donations");
-        console.log(response);
-        
+    // componentDidMount() {
+    //     const promise = axios
+    //         .get(
+    //             "https://mongodb+srv://ihsan-mvp:IhsanMVP123@cluster0-lt6bw.mongodb.net/test?retryWrites=true&w=majority"
+    //         )
+    //         .catch(err => console.log(err));
+    //     console.log(promise);
+    // }
+
+    componentDidMount() {
+        this.getDataFromDb();
+        if (!this.state.intervalIsSet) {
+            let interval = setInterval(this.getDataFromDb, 1000);
+            this.setState({ intervalIsSet: interval });
+            console.log(this.state.data);
+                            }
     }
-    render() { 
+    componentWillUnmount() {
+        if (this.state.intervalIsSet) {
+            clearInterval(this.state.intervalIsSet);
+            this.setState({ intervalIsSet: null });
+        }
+    }
+    getDataFromDb = () => {
+        fetch("http://localhost:5000").then(data => data.json())
+        .then(res => this.setState({ data: res.data }));
+        // console.log("Hello");
+    };
+
+    render() {
         return (
             <React.Fragment>
                 <Navbar />
@@ -46,7 +78,7 @@ class App extends Component {
                         <Route path="/login" exact component={LoginForm} />
                         <Route path="/signup" exact component={SignUpForm} />
                         <Route path="/not-found" exact component={NotFound} />
-                        <Redirect to="/not-found"/>
+                        <Redirect to="/not-found" />
                     </Switch>
                 </main>
                 <Footer />
