@@ -29,25 +29,11 @@ class CampaignForm extends FormMethods {
     doSubmit = async () => {
         // call ther server
         
-            // let currentIds = this.state.data.map(data => data._id);
-            // console.log(currentIds);
-            
-            // let idToBeAdded = 0;
-            // while (currentIds.includes(idToBeAdded)) {
-            //     ++idToBeAdded;
-            // }
-
-            
-            // const { data: campaign } = await axios.post(
-                //     "http://localhost:5000/campaigns"
-                // );
-                
-            const campaign = this.state.data;
-            await axios.post(
-                "http://localhost:5000/campaigns",
-                campaign
-            );
-        console.log("Created new campaign", campaign);
+            // CAPTURING THE DATA FROM THE FORM BUT NOR SENDING IT TO DB
+            const { title, description, amount } = this.state.data;
+            const campaign = {title, description, amount}
+            await axios.post("http://localhost:5000/campaigns", campaign);
+        console.log("Created new campaign", campaign); // not loggin _id
     };
 
     render() {

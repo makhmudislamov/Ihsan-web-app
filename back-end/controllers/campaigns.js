@@ -25,9 +25,9 @@ module.exports = (app) => {
     app.post('/campaigns', (req, res) => {
         Campaign.create(req.body).then((campaign) => {
             console.log(campaign)
-            res.redirect(`/campaigns/${campaign._id}`) // Redirect to campaigns/:id
+            // res.redirect(`/campaigns/${campaign._id}`) // Redirect to campaigns/:id
             // returning json
-            // res.json(campaign)
+            res.json(campaign)
             // res.send...
         }).catch((err) => {
             console.log(err.message)
