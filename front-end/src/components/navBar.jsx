@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Route, Link } from 'react-router-dom';
-import HomePage from './homePage';
+import { Link } from 'react-router-dom';
+// import HomePage from './homePage';
 
 class Navbar extends Component {
     state = {  }

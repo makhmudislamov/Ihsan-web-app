@@ -3,7 +3,7 @@ const Campaign = require("../models/campaign");
 module.exports = (app) => {
 
     // INDEX
-    app.get("/", (req, res) => {
+    app.get("/home", (req, res) => {
         Campaign.find()
             .then(campaigns => {
                 // res.render("campaigns-index", { campaigns: campaigns });

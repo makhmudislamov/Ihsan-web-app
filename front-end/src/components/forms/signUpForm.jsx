@@ -1,6 +1,6 @@
 import React from "react";
 import Joi from "joi-browser";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Card } from "react-bootstrap";
 import FormMethods from './common/formMethods';
 class SignUpForm extends FormMethods {
     state = {

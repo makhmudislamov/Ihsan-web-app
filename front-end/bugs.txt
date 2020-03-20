@@ -1,7 +1,5 @@
-handleSubmit on newCampaign form is not working
+using axios
 
-            /*<Route
-                                exact
-                                path="/campaigns/:id"
-                                component={CampaignDetails}
-                            /> */
+on react package.json add:
+"proxy": "http://localhost:5000/home" // cant use root! 
+

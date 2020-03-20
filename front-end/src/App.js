@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import axios from 'axios';
-import Joi from 'joi-browser';
+// import axios from 'axios';
+// import Joi from 'joi-browser';
 import Navbar from './components/navBar';
 import Footer from './components/footer';
 import HomePage from './components/homePage';
@@ -15,44 +15,51 @@ import CampaignForm from './components/forms/campaignForm';
 
 class App extends Component {
     state = {
-        data: [],
-        id: 0,
-        message: null,
-        intervalIsSet: false,
-        idToDelete: null,
-        idToUpdate: null,
-        objectToUpdate: null
+        // data: [],
+        // id: 0,
+        // message: null,
+        // intervalIsSet: false,
+        // idToDelete: null,
+        // idToUpdate: null,
+        // objectToUpdate: null
     };
 
-    // componentDidMount() {
-    //     const promise = axios
-    //         .get(
-    //             "https://mongodb+srv://ihsan-mvp:IhsanMVP123@cluster0-lt6bw.mongodb.net/test?retryWrites=true&w=majority"
-    //         )
+    // async componentDidMount() {
+    //     const { data: campaigns } = await axios
+    //         .get("http://localhost:5000/home")
     //         .catch(err => console.log(err));
-    //     console.log(promise);
+    //     console.log(campaigns);
+    //     this.setState({campaigns})
     // }
 
-    componentDidMount() {
-        this.getDataFromDb();
-        if (!this.state.intervalIsSet) {
-            let interval = setInterval(this.getDataFromDb, 1000);
-            this.setState({ intervalIsSet: interval });
-            console.log(this.state.data);
-                            }
-    }
-    componentWillUnmount() {
-        if (this.state.intervalIsSet) {
-            clearInterval(this.state.intervalIsSet);
-            this.setState({ intervalIsSet: null });
-        }
-    }
+    // componentDidMount() {
+    //     this.getDataFromDb();
+    //     if (!this.state.intervalIsSet) {
+    //         let interval = setInterval(this.getDataFromDb, 1000);
+    //         this.setState({ intervalIsSet: interval });
+    //         console.log(this.state.data);
+    //     }
+    // }
+    // componentWillUnmount() {
+    //     if (this.state.intervalIsSet) {
+    //         clearInterval(this.state.intervalIsSet);
+    //         this.setState({ intervalIsSet: null });
+    //     }
+    // }
+    // getDataFromDb = () => {
+    //     fetch("http://localhost:5000/home").then(data => data.json())
+    //     .then(res => this.setState({ data: res.data }));
+    //     // console.log("Hello");
+    // };
     getDataFromDb = () => {
-        fetch("http://localhost:5000").then(data => data.json())
-        .then(res => this.setState({ data: res.data }));
-        // console.log("Hello");
+        fetch("http://localhost:5000/home")
+            .then(data => data.json())
+            .then(json => {
+                console.log(json);
+                this.setState({ data: json });
+            })
+            .catch(err => console.log(err.message));
     };
-
     render() {
         return (
             <React.Fragment>
