@@ -1,7 +1,9 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
 import Joi from "joi-browser";
+import axios from "axios";
 import FormMethods from './common/formMethods';
+
 class CampaignForm extends FormMethods {
     state = {
         data: {
@@ -24,14 +26,31 @@ class CampaignForm extends FormMethods {
             .label("Amount") // later change this to int or float
     };
 
-    doSubmit = () => {
+    doSubmit = async () => {
         // call ther server
-        console.log("Created new campaign");
+        
+            // let currentIds = this.state.data.map(data => data._id);
+            // console.log(currentIds);
+            
+            // let idToBeAdded = 0;
+            // while (currentIds.includes(idToBeAdded)) {
+            //     ++idToBeAdded;
+            // }
+
+            
+            // const { data: campaign } = await axios.post(
+                //     "http://localhost:5000/campaigns"
+                // );
+                
+            const campaign = this.state.data;
+            await axios.post(
+                "http://localhost:5000/campaigns",
+                campaign
+            );
+        console.log("Created new campaign", campaign);
     };
 
     render() {
-        
-
         return (
             <Card
                 style={{

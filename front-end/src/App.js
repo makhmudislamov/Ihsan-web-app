@@ -51,15 +51,15 @@ class App extends Component {
     //     .then(res => this.setState({ data: res.data }));
     //     // console.log("Hello");
     // };
-    getDataFromDb = () => {
-        fetch("http://localhost:5000/home")
-            .then(data => data.json())
-            .then(json => {
-                console.log(json);
-                this.setState({ data: json });
-            })
-            .catch(err => console.log(err.message));
-    };
+    // getDataFromDb = () => {
+    //     fetch("http://localhost:5000/home")
+    //         .then(data => data.json())
+    //         .then(json => {
+    //             console.log(json);
+    //             this.setState({ data: json });
+    //         })
+    //         .catch(err => console.log(err.message));
+    // };
     render() {
         return (
             <React.Fragment>

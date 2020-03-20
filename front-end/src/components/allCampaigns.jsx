@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+const dbUri = "http://localhost:5000/home";
 class AllCampaigns extends Component {
     state = {
         campaigns: []
@@ -8,7 +10,7 @@ class AllCampaigns extends Component {
 
     async componentDidMount() {
         const { data: campaigns } = await axios
-            .get("http://localhost:5000/home")
+            .get(dbUri)
             .catch(err => console.log(err));
         console.log(campaigns);
         this.setState({ campaigns });
@@ -44,7 +46,7 @@ class AllCampaigns extends Component {
                     </thead>
                     <tbody>
                         {this.state.campaigns.map(campaign => (
-                            <tr key={campaign.id}>
+                            <tr key={campaign._id}>
                                 <td>{campaign.title}</td>
                                 <td>
                                     <button
